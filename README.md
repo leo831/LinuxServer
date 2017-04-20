@@ -60,10 +60,24 @@ while login as grader copy the genereated key that you created on previews steps
 ` nano .ssh/authorized_keys`  
 Paste the key you created and save it.
 
+## Change SSH Port
+`sudo vim /etc/ssh/sshd_config`  
+change Port value 22 to 2200  
+`sudo service ssh restart`
+
+
+## Configure Firewall
+`sudo ufw default deny incoming`  
+`sudo ufw default allow outgoing`  
+`sudo ufw allow 2200/tcp`  
+`sudo ufw allow www`  
+`sudo ufw allow ssh`  
+`sudo ufw allow ntp`  
+`sudo ufw enable`  
+
 ## Clone Item Catalog
 `cd /var/www/`  
 `sudo git clone https://github.com/leo831/Restaurant.git`  
-
 
 ## Create WSGI Application
 `sudo touch application.wsgi` 
